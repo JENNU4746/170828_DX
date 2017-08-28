@@ -1,0 +1,29 @@
+#pragma once
+
+#define WIDTH 640
+#define HEIGHT 480
+
+extern LPDIRECT3D9 g_pD3D; // hWnd
+extern LPDIRECT3DDEVICE9 g_pd3dDevice; // HDC
+extern BOOL g_bIsFullScreen;
+
+extern LPDIRECT3DVERTEXBUFFER9 g_pVB;
+extern LPDIRECT3DTEXTURE9 g_pTexture;
+
+struct CUSTOMVERTEX
+{
+	D3DXVECTOR3 position;
+	FLOAT tu, tv;
+};
+
+#define D3DFVF_CUSTOMVERTEX (D3DFVF_XYZ|D3DFVF_TEX1)
+
+HRESULT InitD3D(HWND hWnd);
+VOID Run(LPDIRECT3DDEVICE9 pd3dDevice);
+VOID Cleanup();
+
+HRESULT PreRender(LPDIRECT3DDEVICE9 pd3dDevice);
+VOID Render(LPDIRECT3DDEVICE9 pd3dDevice);
+VOID PostRender(LPDIRECT3DDEVICE9 pd3dDevice);
+
+HRESULT InitVB();
